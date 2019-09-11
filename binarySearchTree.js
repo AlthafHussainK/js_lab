@@ -119,10 +119,100 @@ class BST {
 		}
 		this.root = removeNode(this.root, data);
 	}
+	isBalanced() {
+		return (this.findMinHeight() >= this.findMaxHeight() - 1);
+	}
+	findMinHeight(node = this.root) {
+		if (node == null) {
+			return -1;
+		};
+		let left = this.findMinHeight(node.left);
+		let right = this.findMinHeight(node.right);
+		if (left < right) {
+			return left + 1;
+		} else {
+			return right + 1;
+		};
+	}
+	findMaxHeight(node = this.root) {
+		if (node == null) {
+			return -1;
+		};
+		let left = this.findMaxHeight(node.left);
+		let right = this.findMaxHeight(node.right);
+		if (left > right) {
+			return left + 1;
+		} else {
+			return right + 1;
+		};
+	}
+	inOrder() {
+		if (this.root == null) {
+			return null;
+		} else {
+			var result = new Array();
+			function traverseInOrder(node) {
+				node.left && traverseInOrder(node.left);
+				result.push(node.data);
+				node.right && traverseInOrder(node.right);
+			}
+			traverseInOrder(this.root);
+			return result;
+		};
+	}
+	preOrder() {
+		if (this.root == null) {
+			return null;
+		} else {
+			var result = new Array();
+			function traversePreOrder(node) {
+				result.push(node.data);
+				node.left && traversePreOrder(node.left);
+				node.right && traversePreOrder(node.right);
+			};
+			traversePreOrder(this.root);
+			return result;
+		};
+	}
+	postOrder() {
+		if (this.root == null) {
+			return null;
+		} else {
+			var result = new Array();
+			function traversePostOrder(node) {
+				node.left && traversePostOrder(node.left);
+				node.right && traversePostOrder(node.right);
+				result.push(node.data);
+			};
+			traversePostOrder(this.root);
+			return result;
+		}
+	}
+	levelOrder() {
+		let result = [];
+		let Q = [];
+		if (this.root != null) {
+			Q.push(this.root);
+			while(Q.length > 0) {
+				let node = Q.shift();
+				result.push(node.data);
+				if (node.left != null) {
+					Q.push(node.left);
+				};
+				if (node.right != null) {
+					Q.push(node.right);
+				};
+			};
+			return result;
+		} else {
+			return null;
+		};
+	};
 }
 
 const bst = new BST();
 
+bst.add(21);
 bst.add(9);
 bst.add(3);
 bst.add(11);
@@ -136,3 +226,16 @@ console.log(bst.findMax());
 bst.remove(2);
 console.log(bst.findMin());
 console.log(bst.isPresent(31));
+bst.add(2);
+bst.add(4);
+bst.add(23);
+bst.add(1);
+console.log(bst.findMinHeight());
+console.log(bst.findMaxHeight());
+console.log(bst.isBalanced());
+
+console.log('inOrder: ' + bst.inOrder());
+console.log('preOrder: ' + bst.preOrder());
+console.log('postOrder: ' + bst.postOrder());
+
+console.log('levelOrder: ' + bst.levelOrder());
