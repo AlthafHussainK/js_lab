@@ -17,8 +17,8 @@ export class Animal {
   }
 }
 
-export class Cat extends Animal {
-  makeNoise(sound = "meow") {
-    console.log(sound)
-  }
-}
+// export class Cat extends Animal {
+//   makeNoise(sound = "meow") {
+//     console.log(sound)
+//   }
+// }

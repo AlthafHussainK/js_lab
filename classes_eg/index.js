@@ -1,6 +1,6 @@
-import { Animal, Cat } from './animal.js'
+import { Animal } from './animal.js'
 
-let cat = new Cat('Cat', 4) 
+let cat = new Animal('Cat', 4) 
 
 cat.makeNoise()
 
