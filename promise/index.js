@@ -1,28 +1,24 @@
-document.getElementById("action").addEventListener("click", async ()=>{
-    
- //Promise chaining
-  // const userApi = 'https://randomuser.me/api/'
+const userApi = 'https://randomuser.me/api/'
+
+//Promise chaining
+document.getElementById('chaining').addEventListener("click", async ()=>{
   
-  // fetch(userApi).then(response=>response.json()).then(json=>{
-  //     const firstUser = json.results[0].name.first
-  //     fetch(userApi).then(response=>response.json()).then(json=>{
-  //         const secondUser = json.results[0].name.first
-  //         console.log(`${firstUser} and ${secondUser} are friends`)
-  //     })
-  // })
+  fetch(userApi).then(response=>response.json()).then(json=>{
+      console.log('promise chaining: ', json.results[0].name.first)
+      }).catch(err => console.log(err))
+})
   
-  //async/await
-  const firstResponse = await fetch(userApi)
-  const firstUserJson = await firstResponse.json()
-  const firstUser = firstUserJson.results[0].name.first
+//async/await
+document.getElementById('y').addEventListener('click', async () => {
   
-  const secondResponse = await fetch(userApi)
-  const secondUserJson = await secondResponse.json()
-  const secondUser = secondUserJson.results[0].name.first
-  
-  console.log(`${firstUser} and ${secondUser} are friends`)
-  
-  
+  try {
+
+    const response = await fetch(userApi)
+    const json = await response.json()
+    console.log('async/await:', json.results[0].name.first)
+  } catch(err) {
+    console.log(err)
+  }
   })
-  
+
   
