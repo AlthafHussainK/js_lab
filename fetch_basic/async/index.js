@@ -1,6 +1,6 @@
 //async with error handling
 async function getPost() {
-  const postPromise = await fetch('')
+  const postPromise = await fetch('https://jsonplaceholder.typicode.com/posts')
 
   if(postPromise.ok){
     const posts = await postPromise.json()
