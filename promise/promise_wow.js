@@ -23,7 +23,7 @@ const taskExclaim = () => {
 }
 
 const taskSmiley = () => {
-  return new Promise((rea) => {
+  return new Promise((res) => {
     setTimeout(() => {
       res(':)')
     }, 300)
