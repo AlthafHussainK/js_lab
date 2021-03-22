@@ -19,10 +19,16 @@ async function submitPost(e) {
     options
   )
 
-  const post = await postPromise.json()
+  if(postPromise.ok){
 
-  title = post.title
-  body = post.body
+    const post = await postPromise.json()
+
+    title = post.title
+    body = post.body
+  } else {
+    title = 'Error'
+    body = `Status: ${postPromise.status}`
+  }
 
   document.querySelector('.card-title').innerHTML = title
   document.querySelector('.card-text').innerHTML = body
