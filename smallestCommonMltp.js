@@ -1,4 +1,3 @@
-
 function smallestCommons(arr) {
   arr.sort((a,b) => a-b)
   let low = arr[0], high = arr[1]
