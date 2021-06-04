@@ -15,7 +15,6 @@ function rot13(str) {
   let decryptedStr = decryptArr.join('')
   console.log(decryptedStr)
   return decryptedStr;
-
 }
 
 rot13("SERR CVMMN!");
