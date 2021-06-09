@@ -10,8 +10,6 @@ function telephoneCheck(str) {
     return false
   } else if (onlyNum.length === 11){
     if (str[0] == 1) {
-      console.log(nonNum.join())
-      console.log([' ', '-'])
       if (nonNum.join() == [' ', ' ', ' '].join()) return true
       if (nonNum.join() == ['(', ')', '-'].join()) return true
       if (nonNum.join() == [' ', '-', '-'].join()) return true
