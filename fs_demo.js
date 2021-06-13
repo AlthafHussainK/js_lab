@@ -8,10 +8,15 @@ const path = require('path')
 // })
 
 // Create and write to file
-fs.writeFile(path.join(__dirname, '/new_folder', 'hello.txt'),
-  'Hello Node!',
-  err => {
-    if (err) throw err
-    console.log('File written to...')
-  }
-)
+// fs.writeFile(path.join(__dirname, '/new_folder', 'hello.txt'),
+//   'Hello Node!',
+//   err => {
+//     if (err) throw err
+//     console.log('File written to...')
+//   }
+// )
+
+fs.readFile(path.join(__dirname, '/new_folder', 'hello.txt'), 'utf8', (err, data) => {
+  if (err) throw err
+  console.log(data)
+})
